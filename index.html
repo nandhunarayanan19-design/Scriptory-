@@ -291,9 +291,11 @@
             `IMPORTANT: ATTACH YOUR PDF SCRIPT TO THIS EMAIL BEFORE SENDING.`
         );
 
-        window.location.href = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
+        // This triggers the mail client. 
+        // Remember to add the Java bridge in Sketchware onCreate to handle this!
+        window.location.href = "mailto:" + targetEmail + "?subject=" + subject + "&body=" + body;
     }
 </script>
 
 </body>
-</html>
+                </html>
