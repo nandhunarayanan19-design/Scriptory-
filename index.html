@@ -44,7 +44,6 @@
         .hero { padding: 40px 5% 10px; text-align: center; }
         h1 { font-size: 2.4rem; margin: 0; font-weight: 800; letter-spacing: -1.5px; }
 
-        /* PRIZES */
         .prize-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -103,7 +102,6 @@
 
         .btn-main { background: var(--brand-dark); color: var(--text-main); padding: 16px 50px; border-radius: 10px; text-decoration: none; font-weight: 700; display: inline-block; cursor: pointer; border: none; font-size: 1rem; transition: transform 0.2s ease; }
 
-        /* MODAL */
         #submissionModal {
             display: none;
             position: fixed;
@@ -202,7 +200,7 @@
         <div>
             <h3 style="font-size: 1rem; color: var(--brand-primary); margin-top: 0; letter-spacing: 1px;">LOGISTICS</h3>
             <div class="rule-row"><span>Entry Limit</span> <strong>3 Scripts</strong></div>
-            <div class="rule-row)<span>Page Limit</span> <strong>30 Pages</strong></div>
+            <div class="rule-row"><span>Page Limit</span> <strong>30 Pages</strong></div>
             <div class="rule-row"><span>Entry Fee</span> <strong>₹99</strong></div>
         </div>
         <div>
@@ -227,36 +225,29 @@
 <div id="submissionModal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        
         <div class="modal-header">
             <h2>Complete Entry</h2>
             <p>Pay ₹99 to the UPI ID below, then fill out your details.</p>
         </div>
-
         <div class="upi-box">
             <span class="field-label">Pay To UPI ID</span>
             <span class="upi-id-text">imnandunarayanan3@okhdfcbank</span>
         </div>
-
         <div class="field-group">
             <label class="field-label">Full Name</label>
             <input type="text" id="writerName" class="professional-input" placeholder="Rahul Sharma">
         </div>
-
         <div class="field-group">
             <label class="field-label">Screenplay Title</label>
             <input type="text" id="scriptTitle" class="professional-input" placeholder="Title of your script">
         </div>
-
         <div class="field-group">
             <label class="field-label">Transaction ID / UTR</label>
             <input type="text" id="txnId" class="professional-input" placeholder="12-digit UPI Transaction ID">
         </div>
-
         <p style="font-size: 0.75rem; color: var(--accent-gold); margin-bottom: 20px; line-height: 1.4;">
             <b>NOTE:</b> After clicking below, manually attach your PDF to the email draft.
         </p>
-
         <button class="submit-btn" onclick="draftSubmission()">Draft Email & Submit</button>
     </div>
 </div>
@@ -279,14 +270,13 @@
             return;
         }
 
-        // TALKS TO YOUR SKETCHWARE JAVA INTERFACE
+        // TRIGGERS YOUR NATIVE SKETCHWARE BRIDGE
         if (window.EmailBridge) {
             EmailBridge.sendDraft(name, title, txn);
         } else {
-            alert("Application bridge not found. Please restart the app.");
+            alert("Application interface error. Ensure bridge is set in onCreate.");
         }
     }
 </script>
-
 </body>
-            </html>
+</html>
