@@ -202,7 +202,7 @@
         <div>
             <h3 style="font-size: 1rem; color: var(--brand-primary); margin-top: 0; letter-spacing: 1px;">LOGISTICS</h3>
             <div class="rule-row"><span>Entry Limit</span> <strong>3 Scripts</strong></div>
-            <div class="rule-row"><span>Page Limit</span> <strong>30 Pages</strong></div>
+            <div class="rule-row)<span>Page Limit</span> <strong>30 Pages</strong></div>
             <div class="rule-row"><span>Entry Fee</span> <strong>₹99</strong></div>
         </div>
         <div>
@@ -273,29 +273,20 @@
         const name = document.getElementById('writerName').value;
         const title = document.getElementById('scriptTitle').value;
         const txn = document.getElementById('txnId').value;
-        const targetEmail = "imnandunarayanan3@gmail.com";
 
         if(!name || !title || !txn) {
             alert("Please complete all fields.");
             return;
         }
 
-        const subject = encodeURIComponent(`Investigation Entry: ${title}`);
-        const body = encodeURIComponent(
-            `SUBMISSION LOG\n` +
-            `Writer: ${name}\n` +
-            `Title: ${title}\n` +
-            `Transaction: ${txn}\n\n` +
-            `Payee UPI: imnandunarayanan3@okhdfcbank\n` +
-            `----------------------------------\n` +
-            `IMPORTANT: ATTACH YOUR PDF SCRIPT TO THIS EMAIL BEFORE SENDING.`
-        );
-
-        // This triggers the mail client. 
-        // Remember to add the Java bridge in Sketchware onCreate to handle this!
-        window.location.href = "mailto:" + targetEmail + "?subject=" + subject + "&body=" + body;
+        // TALKS TO YOUR SKETCHWARE JAVA INTERFACE
+        if (window.EmailBridge) {
+            EmailBridge.sendDraft(name, title, txn);
+        } else {
+            alert("Application bridge not found. Please restart the app.");
+        }
     }
 </script>
 
 </body>
-                </html>
+            </html>
